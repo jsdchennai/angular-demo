@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { PaginationRequest, User } from 'src/app/models';
+import { User } from 'src/app/models';
 import { ExportToExcelService } from 'src/app/shared/services/export-to-excel.service';
-import { read, utils, writeFile, writeFileXLSX } from 'xlsx';
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
