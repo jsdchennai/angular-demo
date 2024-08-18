@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AppCoreModule } from './core';
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +18,6 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     SharedModule.forRoot(),
     AppRoutingModule,
     NgxSpinnerModule,
-    SweetAlert2Module.forRoot(),
   ],
   bootstrap: [AppComponent],
 })

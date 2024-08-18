@@ -11,8 +11,6 @@ import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class HttpAuthInterceptor implements HttpInterceptor {
-  constructor() {}
-
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -38,10 +36,10 @@ export class HttpAuthInterceptor implements HttpInterceptor {
     let errorMessage: string = error.error.message;
 
     if (errorMessage) {
-      return throwError(() => new Error(errorMessage));
+      return throwError(() => errorMessage);
     }
 
     errorMessage = 'Error occured';
-    return throwError(() => new Error(errorMessage));
+    return throwError(() => errorMessage);
   }
 }
