@@ -1,0 +1,62 @@
+<div *ngIf="dataSource.length > 0" class="card-container">
+  <mat-card appearance="raised">
+    <mat-card-header class="card-header">
+      <mat-card-title>
+        <h2 class="card-title">User Management</h2>
+      </mat-card-title>
+      <button mat-raised-button (click)="exportToExcel()">Export Excel</button>
+    </mat-card-header>
+
+    <mat-card-content>
+      <table mat-table [dataSource]="dataSource" class="users-table">
+        <!-- FirstName Column -->
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef>First Name</th>
+          <td mat-cell *matCellDef="let element">
+            <span>
+              <img [src]="element.image" class="user-img" />
+            </span>
+            <span>{{ element.firstName }}</span>
+          </td>
+        </ng-container>
+
+        <!-- LastName Column -->
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef>Last Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.lastName }}
+          </td>
+        </ng-container>
+
+        <!-- BirthDate Column -->
+        <ng-container matColumnDef="birthDate">
+          <th mat-header-cell *matHeaderCellDef>Birth Date</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.birthDate | date }}
+          </td>
+        </ng-container>
+
+        <!-- BloodGroup Column -->
+        <ng-container matColumnDef="bloodGroup">
+          <th mat-header-cell *matHeaderCellDef>Blood Group</th>
+          <td mat-cell *matCellDef="let element">{{ element.bloodGroup }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator
+        #paginator
+        (page)="handlePageEvent($event)"
+        [length]="length"
+        [pageSize]="pageSize"
+        [showFirstLastButtons]="showFirstLastButtons"
+        [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+        [hidePageSize]="hidePageSize"
+        [pageIndex]="pageIndex"
+      >
+      </mat-paginator>
+    </mat-card-content>
+  </mat-card>
+</div>
